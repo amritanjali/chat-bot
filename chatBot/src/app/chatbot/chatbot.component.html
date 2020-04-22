@@ -1,0 +1,94 @@
+<div id="chatApp">
+
+    <div class="chatBox" id="chatBox">
+      <div class="card">
+     
+     <header class="card-header header-title" >
+        <p class="card-header-title">
+          <i class="fa fa-circle is-online"></i><img src="../../assets/user.png" style="width: 30px;">&nbsp;{{headUser}}
+        </p>
+        <a class="card-header-icon">
+          <span class="icon">
+            <i class="fa fa-close"></i>
+          </span>
+        </a>
+      </header>
+     
+     <div id="chatbox-area">
+      <div class="card-content chat-content">
+        <div class="content">
+          <div class="chat-message-group">
+            <!-- <div class="chat-thumb">
+              <figure class="image is-32x32">
+                <img src="https://k0.okccdn.com/php/load_okc_image.php/images/32x0/971x939/0/10846088441021659030.webp?v=2">
+              </figure>
+            </div> -->
+            <!-- <div class="chat-messages">
+              <div #res></div>
+              <div #bot></div>
+            </div> -->
+            <div>
+            <li class="list-msg">
+                <div class="left-chat">
+                    <img [src]="botImage" class="custom-img">
+                    <p class="msg">hey!! how may i help you</p>
+                </div>
+            </li>
+          </div>
+            <div *ngFor="let singleMessage of messageArray">
+             
+              <li *ngIf="singleMessage.says === 'userSays'" class="list-msg">
+                  <div class="right-chat">
+                      <img [src]="userImage" class="custom-img">
+                      <p class="msg">{{singleMessage.message}}</p>
+                  </div>
+              </li>
+              <li *ngIf="singleMessage.says === 'botSays'" class="list-msg">
+               
+                  <div class="left-chat">
+                      <img [src]="botImage" class="custom-img">
+                      <p [innerHTML]="singleMessage.message" class="msg"></p>
+                  </div>
+              </li>
+          </div>
+          </div>
+          <div class="chat-message-group" *ngIf="mesgTyping">
+              <div class="typing">Typing</div>
+              <div class="spinner">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+               </div>
+            </div>
+          <!-- <div class="chat-message-group writer-user">
+            <div class="chat-messages">
+              <div><div class="message" #bot></div></div>
+              <div *ngIf="!botResponse" ><div class="message">{{chatError}}</div></div>
+            </div>
+          </div> -->
+         
+   
+    
+        </div>
+      </div>
+      <footer class="card-footer" id="chatBox-textbox">
+        <form (ngSubmit)="send(in)" >
+       
+          <textarea id="chatTextarea" class="chat-textarea" placeholder="type message..."  name="in" [(ngModel)]=in (keydown.enter)="send(in)"></textarea>
+        
+      <button class="btn btn-primary send-btn" ><img src="../../assets/enter.png" class="enter-img"></button>
+        
+    
+    </form>
+      </footer>
+      </div>
+    </div>
+    </div>
+    <div class="emojiBox" style="display: none">
+      <div class="box">
+      
+      </div>
+    </div>
+    
+    </div>
+    
